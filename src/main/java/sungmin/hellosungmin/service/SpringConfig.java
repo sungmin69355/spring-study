@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import sungmin.hellosungmin.domain.Member;
 import sungmin.hellosungmin.repository.JdbcMemberRepository;
+import sungmin.hellosungmin.repository.JdbcTemplateMemberRepository;
 import sungmin.hellosungmin.repository.MemberRepository;
 import sungmin.hellosungmin.repository.MemoryMemberRepository;
 
@@ -23,7 +24,8 @@ public class SpringConfig {
     }
     @Bean
     public MemberRepository memberRepository() {
-// return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+        // return new MemoryMemberRepository();
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
