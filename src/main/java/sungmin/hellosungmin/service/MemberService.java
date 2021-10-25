@@ -2,6 +2,7 @@ package sungmin.hellosungmin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sungmin.hellosungmin.domain.Member;
 import sungmin.hellosungmin.repository.MemberRepository;
 import sungmin.hellosungmin.repository.MemoryMemberRepository;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 //@Service
+@Transactional
 public class MemberService { //순수자바 클래스라 스프링이 모른다. @Service를 사용해줘야함
 
     private final MemberRepository memberRepository;
