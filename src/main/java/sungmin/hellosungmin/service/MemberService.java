@@ -23,11 +23,18 @@ public class MemberService { //순수자바 클래스라 스프링이 모른다.
 
 
     public Long join(Member member){
-        //같은 이름이 있는 중복 회원 x
-        validateDuplicateMember(member); //중복회원검증
-        memberRepository.save(member);
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+        try {
+            //같은 이름이 있는 중복 회원 x
+            validateDuplicateMember(member); //중복회원검증
+            memberRepository.save(member);
+            memberRepository.save(member);
+            return member.getId();
+        }finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("Join = "+ timeMs+"ms");
+        }
     }
 
     private void validateDuplicateMember(Member member) {
